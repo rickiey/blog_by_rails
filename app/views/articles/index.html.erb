@@ -1,0 +1,27 @@
+
+<h1>全部 文章</h1>
+ 
+ 
+<%= link_to '新建文章', new_article_path %>
+
+
+
+<table>
+  <tr>
+    <th>标题</th>
+    <th>内容</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to '显示', article_path(article) %></td>
+      <td><%= link_to '编辑', edit_article_path(article) %></td>
+      <td><%= link_to '删除', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
